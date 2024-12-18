@@ -1,5 +1,5 @@
 # Lab3
-
+---
 > Topics: String, StringBuffer, StringBuilder, array of objects, this keyword,
 > constructor overloading
 ---
@@ -122,8 +122,117 @@ class Q3 {
 > Input Output
 
 - ![img.png](Q3.png)
+
 ---
+
 ## Q4
-- Write  a  method  String  removeWhiteSpaces(String  str)  method  that  removes  all  the
-  white  spaces  from  the  string  passed  to  the  method  and  returns  the  modified  string.  Test
-  the functionalities using the main() method of the Tester class. 
+
+- Write a method String removeWhiteSpaces(String str)  method that removes all the
+  white spaces from the string passed to the method and returns the modified string. Test
+  the functionalities using the main() method of the Tester class.
+
+> CODE
+
+```java
+import java.util.Scanner;
+
+/*Darshan Kania*/
+class Tester {
+    public static String whiteSpaceRemover(String str) {
+        return str.replaceAll("\\s", "");
+    }
+
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine();
+        System.out.println(whiteSpaceRemover(str));
+    }
+}
+```
+
+> Input Output
+
+- ![img.png](Q4.png)
+
+---
+
+## Q5
+
+- Write a class Student with member variables int roll_no, String name and an array to store
+  marks of 5 subjects. Demonstrate constructor overloading and use this keyword. Write a
+  findAverage()  method that returns double value. Write a TestStudent class containing
+  main() method to do the following:
+    - Store the details of one student by creating one object of Student class and display
+      them.
+    - Store the details of 3 students by creating an array of objects of Student class and
+      display the details of the student who has the highest average amongst the three
+      students.
+
+> CODE
+
+```java
+import java.util.Arrays;
+
+/*Darshan Kania*/
+class student {
+    private int roll_no;
+    private String name;
+    private int marks[];
+
+    {
+        marks = new int[5];
+        name = new String();
+    }
+
+    public student(final int roll_no, final String name, final int[] marks) {
+        this.roll_no = roll_no;
+        this.name = name;
+        this.marks = marks;
+    }
+
+    public student() {
+    }
+
+    public student(final int[] marks) {
+        this.marks = marks;
+    }
+
+    public double findAverage() {
+        double sum = 0;
+        for (int i = 0; i < marks.length; i++) {
+            sum += marks[i];
+        }
+        return sum / marks.length;
+    }
+
+    @Override
+    public String toString() {
+        return "student{" +
+                "roll_no=" + roll_no +
+                ", name='" + name + '\'' +
+                ", marks=" + Arrays.toString(marks) +
+                '}';
+    }
+}
+
+class TestStudent {
+    public static void main(String args[]) {
+        student std = new student(83, "Maharsh", new int[]{10, 20, 30, 40, 50});
+        System.out.println(std.toString());
+        System.out.println(std.findAverage());
+        student stds[] = new student[]{new student(107, "Darshan", new int[]{30, 36, 30, 30, 34}), new student(121, "Hirav", new int[]{32, 33, 23, 34, 30}), new student(122, "Manthan", new int[]{16, 20, 30, 30, 32})};
+        for (student s : stds) {
+            System.out.println(s.toString());
+            System.out.println(s.findAverage());
+        }
+    }
+}
+```
+
+> Input Output
+
+- ![img.png](Q5.png)
+
+---
+> END OF DOCUMENT
+---
